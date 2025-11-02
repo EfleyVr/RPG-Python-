@@ -162,7 +162,7 @@ while True:
             actionB = random.choice(actionBP)
             while actionB == 2 and mémoireB == 1:
                 actionB = random.choice(actionBP)
-        time.sleep(0.6)
+        time.sleep(0.5)
         print("Le bot à choisis", nom_action[actionB])
         time.sleep(1)
         if actionB == 1:
