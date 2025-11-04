@@ -148,21 +148,27 @@ while True:
         actionBP = [1, 1, 1, 2, 2, 3]
         actionBPC = [1, 1, 2]
         nom_action = {1:"Attaque 1", 2:"Attaque 2", 3:"Soin"}
-        if VieB <= VieBM / 15:
-            actionB = 3
-        elif VieB <= VieBM / 2:
-            chance_soin = random.random()
-            if chance_soin <= 0.55:
-                actionB = 3
-            else:
-                actionB = random.choice(actionBPC)
-                while actionB == 2 and mémoireB == 1:
-                    actionB = random.choice(actionBPC)
+        if Attaque2B >= VieJ and mémoireB == 0:
+            actionB = 2
+        elif Attaque1B >= VieJ:
+            actionB = 1
         else:
-            actionB = random.choice(actionBP)
-            while actionB == 2 and mémoireB == 1:
+            if VieB <= VieBM / 15:
+                actionB = 3
+            elif VieB <= VieBM / 2:
+                chance_soin = random.random()
+                if chance_soin <= 0.55:
+                    actionB = 3
+                else:
+                    actionB = random.choice(actionBPC)
+                    while actionB == 2 and mémoireB == 1:
+                        actionB = random.choice(actionBPC)
+            else:
                 actionB = random.choice(actionBP)
+                while actionB == 2 and mémoireB == 1:
+                    actionB = random.choice(actionBP)
         time.sleep(0.5)
+        #utilisation action bot
         print("Le bot à choisis", nom_action[actionB])
         time.sleep(1)
         if actionB == 1:
